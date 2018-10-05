@@ -47,7 +47,7 @@ for (i in 2:length(report_list)) {
   df$Institution <- as.character(df$Institution)
 
  i_plot <- ggplot(df,
-                  aes(Institution, y, fill = Institution)) +  
+                  aes(Institution, Metric, fill = Institution)) +  
                   geom_col() +
                   labs(title = "", 
                        x = "", 
@@ -59,6 +59,7 @@ for (i in 2:length(report_list)) {
                   scale_y_continuous(labels = scales::comma)
   print(i_plot)
   
+df$ID <- as.character(df$ID)
 print(xtable(df, 
              caption = my_report_metrics$Report_Name[i], 
              label = paste0("table", i)),
