@@ -1,0 +1,7 @@
+Report_Name,Metric,Table
+Institution Names,INSTNM,HD2016
+Retention Rate,RET_PCF,EF2016D
+Graduation Rate,GRRTTOT,DRVGR2016
+ACT Composite 25th Percentile,ACTCM25,ADM2016
+ACT Composite 75th Percentile,ACTCM75,ADM2016
+Undergraduate FTE,EFUGFT,DRVEF2016

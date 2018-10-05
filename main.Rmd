@@ -1,0 +1,73 @@
+---
+title: "IPEDS Peer Report 2016-2017"
+author: 
+ - "Office of Decision Support"
+ - "University of Nevada, Las Vegas"
+date: "`r Sys.Date()`"
+output: 
+  pdf_document:
+    toc: true
+    toc_depth: 2
+header-includes:
+  - \usepackage{float}
+  - \usepackage{amsmath}
+  - \usepackage{amssymb}
+  - \usepackage{tcolorbox}
+  - \usepackage{fancyhdr}
+  - \usepackage{hyperref}
+---
+
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+## Load packages
+library(knitr)
+library(RODBC)
+library(ggplot2)
+library(xtable)
+library(reshape2)
+library(Hmisc)
+
+## Source files
+source("queries.R")
+
+## Aesthetics
+cols <- c("#B10202", rep("#666666", length(id_vec)-1))
+names(cols) <- as.character(report_list[[2]]$Institution)
+
+```
+
+
+```{r,echo=FALSE,results='asis'}
+for (i in 2:length(report_list)) {
+  cat("\\pagebreak")
+  cat(paste0("\\section{", my_report_metrics$Report_Name[i], "}\n"))
+  df <- report_list[[i]]
+  df$Institution <- as.character(df$Institution)
+
+ i_plot <- ggplot(df,
+                  aes(Institution, y, fill = Institution)) +  
+                  geom_col() +
+                  labs(title = "", 
+                       x = "", 
+                       y = my_report_metrics$Report_Name[i]) +
+                  guides(fill = "none") +
+                  theme_light() +
+                  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) +
+                  scale_fill_manual(values = cols)  +
+                  scale_y_continuous(labels = scales::comma)
+  print(i_plot)
+  
+print(xtable(df, 
+             caption = my_report_metrics$Report_Name[i], 
+             label = paste0("table", i)),
+        table.placement = "H",
+        caption.placement = "top",
+        include.rownames = FALSE,
+        include.colnames = TRUE,
+        comment = FALSE,
+        format.args = list(big.mark = ",",
+                           decimal.mark = "."))   
+}
+```
