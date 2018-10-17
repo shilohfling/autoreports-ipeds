@@ -39,7 +39,7 @@ names(cols) <- as.character(report_list[[2]]$Institution)
 ```
 
 
-```{r,echo=FALSE,results='asis'}
+```{r, echo = FALSE, results = 'asis'}
 for (i in 2:length(report_list)) {
   cat("\\pagebreak")
   cat(paste0("\\section{", my_report_metrics$Report_Name[i], "}\n"))
