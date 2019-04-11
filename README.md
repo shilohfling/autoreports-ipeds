@@ -4,7 +4,7 @@
   This is a brief tutorial on how to get set-up to run custom IPEDS peer reports using the IPEDS Access databases. Due to the size restrictions, the data could not be uploaded to GitHub. The databases are free and open to the public. They can be downloaded [here](https://nces.ed.gov/ipeds/use-the-data/download-access-database). 
 
 
-## Getting up and running with custom peer reports using IPEDS data with SQL, R and LaTeX
+## Getting up and running
 
 ### Prerequisites 
 #### The following should be installed before running reports:
