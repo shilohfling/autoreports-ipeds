@@ -54,7 +54,7 @@ ipeds <- odbcConnectAccess2007("IPEDS201617.accdb")
 ```
 
 #### [report_peers.csv](https://github.com/shilohbradley/autoreports-ipeds/blob/master/report_peers.csv)
-- Change 182281 to your IPEDS UnitID. Make sure that you always keep your as the first.
+- Change 182281 to your IPEDS UnitID. Make sure that you always keep yours as the first.
 - Change the rest of the UnitID’s in rows 3-10
 - You can add as many or as few peers as you want. More than eight might become cumbersome, but you can do it.
 
