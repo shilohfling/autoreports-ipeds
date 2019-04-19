@@ -46,15 +46,24 @@ my_report_metrics <- read.csv("report_metrics.csv", header = TRUE, stringsAsFact
 
 report_list <- list()
 
-## Query metrics from Database -----
-for (i in 2:nrow(my_report_metrics)) {
-  i_r <- flexible_query(metric = my_report_metrics$Metric[i],
-                      tablename = my_report_metrics$Table[i],
-                      instnm_table = my_report_metrics$Table[1])
+if (((my_report_metrics$Report_Name[1] == "Institution Names") & (my_report_metrics$Metric[1] == "INSTNM") & (length(grep("HD20[0-9][0-9]", my_report_metrics$Table[1])) > 0))) {
+  report_list <- list()
   
- i_r <- i_r[match(id_vec,as.numeric(as.character(i_r$UNITID))), ]
- report_list[[i]] <- i_r
+  ## Query metrics from Database -----
+  for (i in 2:nrow(my_report_metrics)) {
+    i_r <- flexible_query(metric = trimws(my_report_metrics$Metric[i], which = "both"),
+                          tablename = trimws(my_report_metrics$Table[i], which = "both"),
+                          instnm_table = trimws(my_report_metrics$Table[1], which = "both"))
+    
+    i_r <- i_r[match(id_vec,as.numeric(as.character(i_r$UNITID))), ]
+    report_list[[i]] <- i_r
+  }  
+} else {
+  stop("Do not remove HD20XY from row 2.  Custom reports begin on row 3 of the report_metrics.csv file.")
 }
+
+
+
 
 
 
