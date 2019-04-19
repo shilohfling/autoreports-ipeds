@@ -63,4 +63,5 @@ ipeds <- odbcConnectAccess2007("IPEDS201617.accdb")
   - *Metric* is the variable that you want to use for comparison.
   - *Table* is which table the variable comes from.
   - Make sure to check the table names when changing which Access database you are using. HD2016 could become HD2017 for the next year of data. 
-  - You can add as many “Metrics” as you want to make the peer report as complex as you want.
+  - You can add as many “Metrics” as you want to make the peer report as complex as you want
+  - **CRITICAL:** The first row after the header must always be "Institution Names", "INSTNM", and "HD2016" (where 2016 can change to various years depending on the year of the report you want to use).
