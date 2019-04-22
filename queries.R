@@ -44,8 +44,6 @@ id_self <- id_vec[1]
 ## Load Report Metrics from csv file
 my_report_metrics <- read.csv("report_metrics.csv", header = TRUE, stringsAsFactors = FALSE)
 
-report_list <- list()
-
 if (((my_report_metrics$Report_Name[1] == "Institution Names") & (my_report_metrics$Metric[1] == "INSTNM") & (length(grep("HD20[0-9][0-9]", my_report_metrics$Table[1])) > 0))) {
   report_list <- list()
   
