@@ -19,7 +19,7 @@ header-includes:
 
 
 ```{r setup, include = FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, fig.width = 8, fig.height = 8)
 
 ## Load packages
 library(knitr)
@@ -59,7 +59,7 @@ for (i in 2:length(report_list)) {
                   scale_y_continuous(labels = scales::comma)
   print(i_plot)
   
-df$ID <- as.character(df$ID)
+df$UNITID <- as.character(df$UNITID)
 print(xtable(df, 
              caption = my_report_metrics$Report_Name[i], 
              label = paste0("table", i)),
